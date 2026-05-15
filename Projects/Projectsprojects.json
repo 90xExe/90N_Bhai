@@ -67,6 +67,10 @@
     "link":"#",
     "images": [
       {
+        "file": "MIST.jpg",
+        "title": "MAIN BANNER"
+      },
+      {
         "file": "1.png",
         "title": "STARTING SOON"
       },
