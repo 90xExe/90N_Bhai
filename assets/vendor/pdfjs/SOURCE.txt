@@ -1,0 +1,5 @@
+Mozilla PDF.js / pdfjs-dist 6.3.289
+Source: https://registry.npmjs.org/pdfjs-dist/-/pdfjs-dist-6.3.289.tgz
+License: Apache-2.0 (see LICENSE)
+Tarball SHA-512 verified against npm metadata.
+Only browser distribution assets are vendored.

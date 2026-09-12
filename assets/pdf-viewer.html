@@ -1,0 +1,18 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>PDF Preview</title>
+  <style>
+    *{box-sizing:border-box}body{margin:0;background:#383d47;color:#edf0f6;font:14px -apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif}header{position:sticky;top:0;z-index:2;display:flex;align-items:center;justify-content:center;gap:12px;padding:9px 12px;background:#292e37;box-shadow:0 2px 6px #0003}button,select{font:inherit;color:inherit;border:1px solid #ffffff20;background:#454c59;border-radius:5px;min-height:31px;padding:4px 10px;cursor:pointer}button:disabled{opacity:.35;cursor:default}select{max-width:95px}#page-count{min-width:74px;text-align:center}#pages{padding:18px;display:flex;justify-content:flex-start;overflow:auto}canvas{display:block;flex:none;margin:0 auto;height:auto;box-shadow:0 3px 16px #0004;background:white}#status{padding:25px;text-align:center;line-height:1.7}#status[hidden]{display:none}.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:pre-wrap}button:focus-visible,select:focus-visible{outline:2px solid #82b3ff;outline-offset:2px}@media(max-width:400px){header{gap:7px;font-size:12px;padding:8px}button,select{padding:4px 7px;min-height:30px}#pages{padding:10px}}
+  </style>
+  <script src="pdf-viewer.js" type="module"></script>
+</head>
+<body>
+  <header aria-label="PDF controls"><button id="prev" aria-label="Previous PDF page" disabled>‹</button><span id="page-count" aria-live="polite">Loading…</span><button id="next" aria-label="Next PDF page" disabled>›</button><select id="zoom" aria-label="PDF zoom"><option value="1">Fit width</option><option value="0.75">75%</option><option value="1.25">125%</option><option value="1.5">150%</option></select></header>
+  <div id="status" role="status">Opening PDF…</div>
+  <main id="pages"><canvas id="page" aria-label="PDF page"></canvas></main>
+  <div id="page-text" class="sr-only" aria-label="PDF page text"></div>
+</body>
+</html>
+

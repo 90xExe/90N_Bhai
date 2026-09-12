@@ -1,0 +1,29 @@
+{
+  "name": "Md Nazim Uddin Noyon",
+  "shortName": "Noyon",
+  "alias": "90N Bhai",
+  "role": "Broadcast Engineer",
+  "email": "nahid222003@gmail.com",
+  "photo": "assets/profile.webp",
+  "headline": "The technical side of going live.",
+  "intro": "I’m Noyon, a broadcast engineer working behind the scenes of esports. I bring live production, backend workflows, and automation together to keep the show running smoothly.",
+  "bio": "I specialize in esports backend production, stream operations, overlays, production control, observer integration, and live broadcast management—with a strong focus on Free Fire tournaments. I combine broadcast operations with programming and data tools to make production workflows stable, repeatable, and easier to operate under pressure.",
+  "stats": [{"value":"2500+","label":"Live productions"},{"value":"150+","label":"Free Fire events"},{"value":"2023","label":"Where it all began"}],
+  "links": [
+    {"label":"GitHub","url":"https://github.com/90xExe/","icon":"github"},
+    {"label":"LinkedIn","url":"https://bd.linkedin.com/in/md-nazimuddin-noyon","icon":"external"},
+    {"label":"YouTube","url":"https://www.youtube.com/@90n_bhai","icon":"play"},
+    {"label":"Facebook","url":"https://www.facebook.com/90NBhai","icon":"external"},
+    {"label":"Discord","url":"https://discord.gg/free-fire-info-bd-1322169346088243281","icon":"chat"}
+  ],
+  "experience": [
+    {"dates":"2025 — Present","company":"Mangrove Esports","role":"Broadcast Engineer Head","description":"Leading esports live-production backend operations, with a primary focus on Free Fire tournament workflows and production reliability."},
+    {"dates":"2024 — 2025","company":"T4B Officials","role":"Broadcast Engineer","description":"Managed live stream setup, overlays, backend production workflows, and technical broadcast support for esports events."},
+    {"dates":"2023 — 2024","company":"Liquid Production","role":"Production Support","description":"Built hands-on experience with streaming tools, scene control, graphics workflows, and backend coordination in community esports production."}
+  ],
+  "skills": [
+    {"name":"Broadcast","icon":"broadcast","description":"Live production setup, input management, switching, overlays, and stream operations.","items":["vMix","OBS Studio","Live Switching","Overlays","Scene Management","Observer Integration"]},
+    {"name":"Development","icon":"code","description":"Programming for production tools, backend utilities, and the web.","items":["C++","C#","Python","Java","JavaScript","HTML","CSS"]},
+    {"name":"Data & Automation","icon":"sliders","description":"Repeatable workflows, production data, and less repetitive work behind the scenes.","items":["Excel","Google Sheets","API Workflows","Production Automation"]}
+  ]
+}
