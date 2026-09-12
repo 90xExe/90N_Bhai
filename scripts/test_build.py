@@ -2,6 +2,7 @@
 import contextlib
 import io
 import json
+import re
 from pathlib import Path
 import tempfile
 import unittest
@@ -18,7 +19,7 @@ class DesktopImageBuildTests(unittest.TestCase):
         self.root = Path(self.temp.name).resolve()
         for directory in ('Desktop/Projects/New event', 'config', 'assets'):
             (self.root / directory).mkdir(parents=True, exist_ok=True)
-        (self.root / 'index.html').write_text('<html></html>', encoding='utf-8')
+        (self.root / 'index.html').write_text('<html><script src="assets/content.js" defer></script></html>', encoding='utf-8')
         (self.root / 'config/profile.json').write_text('{}', encoding='utf-8')
         (self.root / 'config/assistant.json').write_text('{"questions":[]}', encoding='utf-8')
 
@@ -111,6 +112,33 @@ class DesktopImageBuildTests(unittest.TestCase):
         self.photo('event.jpg')
         self.build()
         self.assertFalse((self.root / '_site/assets/thumbnails/old.jpg').exists())
+
+    def test_added_and_removed_folder_change_manifest_cache_key(self):
+        def key():
+            html = (self.root / '_site/index.html').read_text(encoding='utf-8')
+            return re.search(r'assets/content\.js\?v=([a-f0-9]{16})', html).group(1)
+        source_html = (self.root / 'index.html').read_bytes()
+        self.build()
+        original_key = key()
+        self.build()
+        self.assertEqual(original_key, key())
+        folder = self.root / 'Desktop/Projects/TEST'
+        folder.mkdir()
+        text = folder / 'about.txt'
+        text.write_text('This folder was added on GitHub.', encoding='utf-8')
+        data = self.build()
+        added_key = key()
+        self.assertNotEqual(original_key, added_key)
+        project_root = data['desktop']['children'][0]
+        self.assertIn('TEST', [node['name'] for node in project_root['children']])
+        text.write_text('Updated folder text.', encoding='utf-8')
+        self.build()
+        self.assertNotEqual(added_key, key())
+        text.unlink()
+        folder.rmdir()
+        self.build()
+        self.assertEqual(original_key, key())
+        self.assertEqual(source_html, (self.root / 'index.html').read_bytes())
 
 
 if __name__ == '__main__':

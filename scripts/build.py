@@ -1,7 +1,9 @@
 """Index Desktop/ and build a static site with automatic image previews. Python 3.10+."""
 from __future__ import annotations
 import argparse
+import hashlib
 import json
+import re
 import shutil
 import warnings
 from pathlib import Path
@@ -122,6 +124,18 @@ def generate_thumbnails(output: Path, data: dict, required: bool = False):
     print(f'Generated {generated} image previews in _site only.')
 
 
+def version_desktop_script(output: Path):
+    """Give each desktop manifest a cache key, so added folders appear after reload."""
+    version = hashlib.sha256((output / 'assets/content.js').read_bytes()).hexdigest()[:16]
+    index = output / 'index.html'
+    html = index.read_text(encoding='utf-8')
+    html, count = re.subn(r'(\bsrc=[\"\'])assets/content\.js(?:\?[^\"\']*)?([\"\'])',
+                          lambda match: f'{match[1]}assets/content.js?v={version}{match[2]}', html)
+    if count != 1:
+        raise ValueError('index.html must load assets/content.js exactly once.')
+    index.write_text(html, encoding='utf-8')
+
+
 def build(root: Path = ROOT, export: bool = True, require_thumbnails: bool = False):
     root = root.resolve()
     data = make_manifest(root)
@@ -140,6 +154,7 @@ def build(root: Path = ROOT, export: bool = True, require_thumbnails: bool = Fal
         copy_tree_safe(root / 'Desktop', output / 'Desktop')
         generate_thumbnails(output, data, required=require_thumbnails)
         write_manifest(output / 'assets' / 'content.js', data)
+        version_desktop_script(output)
         (output / '.nojekyll').touch()
     def count(node):
         return 1 + sum(count(child) for child in node.get('children', []))
