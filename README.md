@@ -42,6 +42,8 @@ Desktop/
 
 **GitHub-এ:** `Desktop/`-এর নিচে upload/add/delete/rename করে commit দাও। প্রতিটি push-এ workflow আবার scan করে updated site publish করবে। আলাদা project array বা image list edit করতে হবে না। GitHub empty folder রাখে না—খালি folder রাখতে চাইলে `.gitkeep` file রাখো; সেটি UI-তে দেখা যাবে না।
 
+**ছবি এক জায়গাতেই রাখবে: `Desktop/`।** Project-এর জন্য `Desktop/Projects/তোমার folder/`-এ original ছবি upload করো। `assets/thumbnails`-এ আর কিছু দিতে হবে না; repository-তে এই duplicate folder নেই। GitHub Actions নিজে ছোট previews বানায়, শুধু generated `_site/` website-এ। ছবি বদলালে, rename করলে বা মুছলে পরের build-এ previews-ও নতুন করে তৈরি হবে। Full-size view, zoom এবং download সবসময় original ছবিই ব্যবহার করে।
+
 **নিজের computer-এ:** `Desktop/` edit করার পর `Refresh Desktop.cmd` double-click করো (Python 3.10+ লাগবে), তারপর browser refresh করো। Command line-এ একই কাজ:
 
 ```text
@@ -122,6 +124,8 @@ python -m http.server 8000 --bind 127.0.0.1 --directory _site
 ```
 
 Then open `http://localhost:8000`. `_site/` is disposable build output; edit the source folders, not `_site/`.
+
+GitHub Actions installs the image builder automatically. For optimized local previews, optionally run `python -m pip install -r scripts/requirements.txt` once. Without it, local preview still works using the original images. Generated thumbnails are never written into the source `assets/` folder or committed to GitHub. SVG and unsupported image formats use their originals for previews.
 
 ## Keyboard and window controls
 
