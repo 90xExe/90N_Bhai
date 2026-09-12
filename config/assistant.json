@@ -1,0 +1,216 @@
+{
+  "name": "Ask 90N",
+  "welcome": "Hey! I’m Noyon’s portfolio assistant. I can help you explore his work, skills, and broadcast experience. What would you like to know?",
+  "disclosure": "Quick answers use saved Q&A. Enable on-device AI for natural, context-aware replies.",
+  "fallback": "I don’t have a verified answer to that in Noyon’s portfolio yet. You can ask about his projects, skills, experience, or get in touch with him directly.",
+  "suggestions": [
+    "What does Noyon do?",
+    "Show me his projects",
+    "What tools does he use?",
+    "How can I contact him?"
+  ],
+  "questions": [
+    {
+      "id": "about",
+      "question": "What does Noyon do?",
+      "keywords": [
+        "who",
+        "about",
+        "noyon",
+        "nazim",
+        "90n",
+        "do",
+        "নিজের",
+        "পরিচয়",
+        "কে",
+        "ki koro",
+        "ke tumi"
+      ],
+      "answer": "Md Nazim Uddin Noyon, also known as 90N Bhai, is a Broadcast Engineer specializing in esports backend production. His work covers live stream operations, overlays, observer integration, scene control, and automation, with a strong focus on Free Fire tournaments.",
+      "action": "about",
+      "actionLabel": "Meet Noyon"
+    },
+    {
+      "id": "projects",
+      "question": "Show me his projects",
+      "keywords": [
+        "project",
+        "projects",
+        "work",
+        "portfolio",
+        "event",
+        "events",
+        "tournament",
+        "productions",
+        "প্রজেক্ট",
+        "কাজ",
+        "kaj",
+        "kajgulo"
+      ],
+      "answer": "Explore five featured productions: MR TRIPLE R — 6 Million Special Tournament, RTB Fest 2025, Offline Clash — LQD, T4B × LQD Campus Battle, and MIST Campus Edition. The Projects folder includes 71 production images, plus broadcast links where available.",
+      "action": "finder",
+      "actionLabel": "Open Projects"
+    },
+    {
+      "id": "skills",
+      "question": "What tools does he use?",
+      "keywords": [
+        "tool",
+        "tools",
+        "skill",
+        "skills",
+        "vmix",
+        "obs",
+        "software",
+        "stack",
+        "programming",
+        "python",
+        "javascript",
+        "c++",
+        "c#",
+        "দক্ষতা",
+        "টুল",
+        "দক্ষ",
+        "paro"
+      ],
+      "answer": "Noyon works with vMix and OBS Studio for broadcast production. His software skills include C++, C#, Python, Java, JavaScript, HTML, and CSS. He also uses Excel, Google Sheets, and API workflows for production data and automation.",
+      "action": "skills",
+      "actionLabel": "Explore skills"
+    },
+    {
+      "id": "experience",
+      "question": "Where has he worked?",
+      "keywords": [
+        "experience",
+        "worked",
+        "company",
+        "career",
+        "mangrove",
+        "t4b",
+        "liquid",
+        "role",
+        "head",
+        "journey",
+        "অভিজ্ঞতা",
+        "কোথায়",
+        "kothay"
+      ],
+      "answer": "His portfolio lists Broadcast Engineer Head at Mangrove Esports (2025–Present), Broadcast Engineer at T4B Officials (2024–2025), and Production Support at Liquid Production (2023–2024).",
+      "action": "experience",
+      "actionLabel": "View experience"
+    },
+    {
+      "id": "contact",
+      "question": "How can I contact him?",
+      "keywords": [
+        "contact",
+        "email",
+        "mail",
+        "hire",
+        "hiring",
+        "book",
+        "booking",
+        "available",
+        "availability",
+        "collaborate",
+        "collaboration",
+        "price",
+        "pricing",
+        "cost",
+        "rate",
+        "budget",
+        "charge",
+        "যোগাযোগ",
+        "ইমেইল",
+        "বুকিং",
+        "টাকা",
+        "jogajog",
+        "koto"
+      ],
+      "answer": "For production work or collaboration, email nahid222003@gmail.com. Share the event dates, broadcast requirements, and scope so Noyon can discuss availability and pricing with you. Rates aren’t listed in this portfolio.",
+      "action": "contact",
+      "actionLabel": "Get in touch"
+    },
+    {
+      "id": "automation",
+      "question": "Can he automate production workflows?",
+      "keywords": [
+        "automation",
+        "automate",
+        "automating",
+        "workflow",
+        "workflows",
+        "sheets",
+        "excel",
+        "api",
+        "data",
+        "অটোমেশন"
+      ],
+      "answer": "Yes. His portfolio includes Excel and Google Sheets automation, API workflows, and custom programming for backend production utilities. These support repeatable production tasks and live-event data handling.",
+      "action": "skills",
+      "actionLabel": "View tools & skills"
+    },
+    {
+      "id": "broadcast",
+      "question": "Does he work on Free Fire broadcasts?",
+      "keywords": [
+        "free fire",
+        "esports",
+        "broadcast",
+        "streaming",
+        "stream",
+        "live",
+        "production",
+        "ফ্রি ফায়ার",
+        "ব্রডকাস্ট"
+      ],
+      "answer": "Yes. Free Fire esports is a core focus of Noyon’s broadcast work. His portfolio lists 2,500+ live productions and 150+ Free Fire events, with responsibilities across stream setup, switching, graphics, backend coordination, and observer integration.",
+      "action": "finder",
+      "actionLabel": "See the productions"
+    },
+    {
+      "id": "social",
+      "question": "Where can I find his GitHub and social profiles?",
+      "keywords": [
+        "github",
+        "youtube",
+        "linkedin",
+        "facebook",
+        "discord",
+        "social",
+        "code",
+        "channel",
+        "90xexe"
+      ],
+      "answer": "His GitHub is github.com/90xExe and his YouTube channel is @90n_bhai. You’ll also find LinkedIn, Facebook, and Discord in the Contact window.",
+      "action": "contact",
+      "actionLabel": "Open social links"
+    },
+    {
+      "id": "hello",
+      "question": "Hello",
+      "keywords": [
+        "hello",
+        "hi",
+        "hey",
+        "salam",
+        "হ্যালো",
+        "হাই",
+        "আসসালামু",
+        "সালাম"
+      ],
+      "answer": "Hey! Great to have you here. Ask me about Noyon’s esports productions, his experience, the tools he uses, or how to get in touch."
+    },
+    {
+      "id": "thanks",
+      "question": "Thank you",
+      "keywords": [
+        "thanks",
+        "thank",
+        "ধন্যবাদ",
+        "dhonnobad"
+      ],
+      "answer": "You’re welcome! Feel free to explore the desktop or ask me another question about Noyon’s work."
+    }
+  ]
+}
