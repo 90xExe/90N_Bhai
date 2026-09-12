@@ -1,0 +1,4 @@
+@mlc-ai/web-llm 0.2.85
+https://registry.npmjs.org/@mlc-ai/web-llm/-/web-llm-0.2.85.tgz
+Integrity: sha512-CwUiSAvDCYnmAZlpPMkurPHDfBLq6fvdRB3vRgoA894hRG/V/BSeY9bmMm6iIIU5VpjJxfb/dLPpJX2at0L9rw==
+License: Apache-2.0
