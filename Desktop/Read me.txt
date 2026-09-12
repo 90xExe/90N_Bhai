@@ -29,3 +29,5 @@ Website-এর app খুললে সাজানো page দেখাবে।
 File support: PNG, JPG/JPEG/JFIF, GIF, WebP, SVG, AVIF, BMP, ICO, TIFF, HEIC/HEIF images; PDF; video/audio; text/code; and all other downloadable files. TIFF and HEIC/HEIF get a PNG preview during deployment; originals remain downloadable. Animated GIF stays animated in Preview. Video/audio playback depends on browser codec support. ZIP, Office documents and unknown binary formats show file information and Download.
 
 Assistant templates also support {role}, {bio}, {skills}, {experience}, {stats}; these follow the relevant personal files automatically.
+
+Desktop-এর app ও folder icon চেপে ধরে drag করলে সরানো যাবে। এই browser-এ position save থাকবে; phone ও desktop-এর layout আলাদা। আগের অবস্থায় ফিরতে System Settings → Reset desktop layout চাপো। Keyboard দিয়ে icon-এ focus করে Alt + arrow keys ব্যবহার করো; Shift ধরলে বড় ধাপে সরবে। Drag করার সময় Esc চাপলে বাতিল হবে।

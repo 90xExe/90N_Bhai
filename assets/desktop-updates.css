@@ -116,3 +116,14 @@
 .window-title{left:105px;right:120px}.source-files{margin-top:25px;padding-top:18px;border-top:1px solid var(--line)}
 .document-content>p{white-space:pre-line}.welcome-copy>.intro{white-space:pre-line}
 @media(max-width:700px){.desktop-apps{bottom:150px;grid-template-rows:repeat(auto-fill,90px);grid-auto-columns:78px;gap:10px}.window-title{left:80px;right:20px}.brand-menu{padding:0 5px!important;font-size:.73rem!important}.menu-identity{display:none}}
+
+/* A usable desktop canvas, with space reserved for the menu bar and Dock. */
+.desktop-apps.is-arrangeable{inset:27px 25px 115px;max-width:none;display:block;overflow-x:hidden;overflow-y:auto;scrollbar-gutter:stable}
+.desktop-apps.is-arrangeable .desktop-icon{position:absolute;top:0;left:0;touch-action:none;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;cursor:grab;transition:background .15s,box-shadow .15s}
+.desktop-apps.is-arrangeable .desktop-icon>*{pointer-events:none}
+.desktop-apps.is-arrangeable .desktop-icon:focus-visible{outline:2px solid #b6d7ff;outline-offset:1px;background:#78adff24}
+.desktop-apps.is-arrangeable .desktop-icon.is-dragging{z-index:5;cursor:grabbing;background:#78adff30;box-shadow:0 8px 24px #0003;transform:none}
+.desktop-scroll-space{position:absolute;width:1px;left:0;top:0;pointer-events:none;visibility:hidden}
+.desktop-layout-note{font-size:.8rem;line-height:1.6;color:var(--muted);max-width:480px;margin-bottom:16px}
+@media(min-width:1400px){.desktop-apps.is-arrangeable{inset:39px 38px 115px}}
+@media(max-width:700px){.desktop-apps.is-arrangeable{inset:20px 13px 150px}}

@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="assets/desktop-updates.css">
   <script src="assets/content.js" defer></script>
   <script src="assets/preview-zoom.js" defer></script>
+  <script src="assets/desktop-icons.js" defer></script>
   <script src="assets/app.js" defer></script>
 </head>
 <body>
@@ -35,7 +36,7 @@
   <main class="desktop" id="desktop">
     <div class="desktop-greeting" aria-hidden="true"><span>hello.</span><p>WELCOME TO MY CORNER OF THE INTERNET</p></div>
     <nav class="desktop-apps" id="desktop-apps" aria-label="Portfolio apps"></nav>
-    <div class="desktop-note"><span class="tiny-key">↵</span> Click an icon to explore <span class="note-dot">·</span> <span class="shortcut-key">Ctrl / ⌘ K</span> to search</div>
+    <div class="desktop-note"><span class="tiny-key">↵</span> Click to open · Drag to arrange <span class="note-dot">·</span> <span class="shortcut-key">Ctrl / ⌘ K</span> to search</div>
     <div id="window-layer"></div>
   </main>
   <nav id="dock" class="dock" aria-label="Application dock"></nav>
@@ -46,6 +47,7 @@
     <button data-open="settings">Appearance…</button>
     <hr><button data-action="show-desktop">Show desktop</button>
     <button data-action="restore-windows">Restore windows</button>
+    <button data-action="reset-desktop-layout">Reset desktop layout</button>
     <hr><button data-open="help">How to explore</button>
   </div>
   <div id="window-menu" class="dropdown window-menu" hidden></div>
