@@ -1,4 +1,4 @@
-import {buildMessages, visibleAnswer} from './ai-context.mjs';
+const {buildMessages, visibleAnswer} = await import(new URL('./ai-context.mjs'+new URL(import.meta.url).search, import.meta.url));
 
 let worker, engine, revision=0, generation=0, abortLoad, failAnswer, activeTask, notify=()=>{};
 const state={status:'idle',progress:0,message:'Real AI, running on your device. No API key needed.',model:'balanced'};

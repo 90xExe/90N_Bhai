@@ -1,0 +1,1 @@
+I’m {name}, a broadcast engineer working behind the scenes of esports. I bring live production, backend workflows, and automation together to keep the show running smoothly.

@@ -1,5 +1,6 @@
 _site/
 /assets/thumbnails/
+/assets/previews/
 __pycache__/
 *.pyc
 .DS_Store

@@ -1,0 +1,44 @@
+{
+  "title": "My production toolkit.",
+  "subtitle": "Broadcast tools meet a developer’s mindset.",
+  "groups": [
+    {
+      "name": "Broadcast",
+      "icon": "broadcast",
+      "description": "Live production setup, input management, switching, overlays, and stream operations.",
+      "items": [
+        "vMix",
+        "OBS Studio",
+        "Live Switching",
+        "Overlays",
+        "Scene Management",
+        "Observer Integration"
+      ]
+    },
+    {
+      "name": "Development",
+      "icon": "code",
+      "description": "Programming for production tools, backend utilities, and the web.",
+      "items": [
+        "C++",
+        "C#",
+        "Python",
+        "Java",
+        "JavaScript",
+        "HTML",
+        "CSS"
+      ]
+    },
+    {
+      "name": "Data & Automation",
+      "icon": "sliders",
+      "description": "Repeatable workflows, production data, and less repetitive work behind the scenes.",
+      "items": [
+        "Excel",
+        "Google Sheets",
+        "API Workflows",
+        "Production Automation"
+      ]
+    }
+  ]
+}

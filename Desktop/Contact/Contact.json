@@ -1,0 +1,48 @@
+{
+  "title": "Let’s make it happen.",
+  "subtitle": "A good broadcast starts with a conversation.",
+  "lead": "Planning an esports event or need help with your production workflow? Tell me what you’re working on.",
+  "email": "nahid222003@gmail.com",
+  "services": [
+    "Esports production",
+    "Broadcast engineering",
+    "Workflow automation"
+  ],
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/90xExe/",
+      "icon": "github"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://bd.linkedin.com/in/md-nazimuddin-noyon",
+      "icon": "external"
+    },
+    {
+      "label": "Discord",
+      "url": "https://discord.gg/free-fire-info-bd-1322169346088243281",
+      "icon": "chat"
+    },
+    {
+      "label": "Facebook",
+      "url": "https://www.facebook.com/Sensei.NUB",
+      "icon": "external"
+    },
+    {
+      "label": "YouTube",
+      "url": "https://www.youtube.com/@Sensei_NUB",
+      "icon": "play"
+    },
+    {
+      "label": "TikTok",
+      "url": "https://www.tiktok.com/@sensei_nub.official",
+      "icon": "music"
+    },
+    {
+      "label": "Instagram",
+      "url": "https://www.instagram.com/sensei_nub.gg/",
+      "icon": "image"
+    }
+  ]
+}

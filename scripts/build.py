@@ -2,6 +2,7 @@
 from __future__ import annotations
 import argparse
 import hashlib
+import html as html_tools
 import json
 import re
 import shutil
@@ -9,12 +10,14 @@ import warnings
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-IMAGE_EXT = {'.png', '.jpg', '.jpeg', '.webp', '.gif', '.svg', '.avif', '.bmp', '.ico'}
+IMAGE_EXT = {'.png', '.jpg', '.jpeg', '.jfif', '.webp', '.gif', '.svg', '.avif', '.bmp', '.ico', '.tif', '.tiff', '.heic', '.heif'}
 TEXT_EXT = {'.txt', '.md', '.markdown', '.json', '.csv', '.tsv', '.log', '.py', '.js', '.ts', '.jsx', '.tsx', '.css', '.html', '.htm', '.xml', '.yaml', '.yml', '.ini', '.toml', '.sql', '.c', '.cpp', '.h', '.cs', '.java', '.sh'}
-AUDIO_EXT = {'.mp3', '.wav', '.ogg', '.m4a', '.flac', '.aac'}
-VIDEO_EXT = {'.mp4', '.webm', '.mov', '.m4v', '.ogv'}
+AUDIO_EXT = {'.mp3', '.wav', '.ogg', '.oga', '.opus', '.m4a', '.flac', '.aac', '.aiff', '.wma'}
+VIDEO_EXT = {'.mp4', '.webm', '.mov', '.m4v', '.ogv', '.mkv', '.avi', '.mpeg', '.mpg', '.3gp', '.wmv'}
 SKIP_NAMES = {'node_modules', '__pycache__', 'thumbs.db', 'desktop.ini'}
 TEXT_LIMIT = 256_000
+APP_FOLDERS = {'Desktop/About me': 'profile', 'Desktop/Experience': 'experience',
+               'Desktop/Skills': 'skills', 'Desktop/Contact': 'contact', 'Desktop/Assistant': 'chat'}
 
 def file_kind(path: Path) -> str:
     ext = path.suffix.lower()
@@ -26,7 +29,10 @@ def file_kind(path: Path) -> str:
     return 'file'
 
 def read_json(path: Path):
-    return json.loads(path.read_text(encoding='utf-8-sig'))
+    try:
+        return json.loads(path.read_text(encoding='utf-8-sig'))
+    except (OSError, json.JSONDecodeError) as error:
+        raise ValueError(f'Please check {path}: {error}') from error
 
 def index_desktop(root: Path, path: Path) -> dict:
     relative = path.relative_to(root).as_posix()
@@ -38,7 +44,10 @@ def index_desktop(root: Path, path: Path) -> dict:
             if not child.resolve().is_relative_to((root / 'Desktop').resolve()):
                 raise ValueError(f'File outside Desktop: {relative}')
             children.append(index_desktop(root, child))
-        return {'path': relative, 'name': path.name, 'kind': 'folder', 'children': children}
+        result = {'path': relative, 'name': path.name, 'kind': 'folder', 'children': children}
+        if relative in APP_FOLDERS:
+            result['app'] = APP_FOLDERS[relative]
+        return result
     kind = file_kind(path)
     result = {'path': relative, 'name': path.name, 'kind': kind, 'size': path.stat().st_size}
     if kind == 'text':
@@ -55,11 +64,51 @@ def index_desktop(root: Path, path: Path) -> dict:
             result['kind'] = 'file'
     return result
 
+def read_personal_content(root: Path):
+    desktop = root / 'Desktop'
+    profile = read_json(desktop / 'About me/Profile.json')
+    profile['intro'] = (desktop / 'About me/Introduction.txt').read_text(encoding='utf-8-sig').strip()
+    profile['bio'] = (desktop / 'About me/Bio.txt').read_text(encoding='utf-8-sig').strip()
+    experience = read_json(desktop / 'Experience/Experience.json')
+    skills = read_json(desktop / 'Skills/Skills.json')
+    contact = read_json(desktop / 'Contact/Contact.json')
+    profile.update(experience=experience['items'], skills=skills['groups'],
+                   email=contact['email'], links=contact['links'],
+                   pages={'experience':experience, 'skills':skills, 'contact':contact})
+    for key in ('name', 'alias', 'role', 'headline'):
+        if not isinstance(profile.get(key), str) or not profile[key].strip():
+            raise ValueError(f'Desktop/About me/Profile.json needs a nonempty {key}.')
+    for items, fields, filename in [
+        (profile['experience'], ('dates','company','role','description'), 'Experience/Experience.json'),
+        (profile['skills'], ('name','icon','description','items'), 'Skills/Skills.json'),
+        (profile['links'], ('label','url','icon'), 'Contact/Contact.json')]:
+        if not isinstance(items, list) or any(not isinstance(item, dict) or any(key not in item for key in fields) for item in items):
+            raise ValueError(f'Please check the entries in Desktop/{filename}.')
+    photo = root / profile.get('photo', '')
+    if profile.get('photo') and photo.is_file() and photo.resolve().is_relative_to(desktop.resolve()):
+        profile['photoVersion'] = hashlib.sha256(photo.read_bytes()).hexdigest()[:16]
+    replacements = {'name': profile['name'], 'alias': profile['alias'], 'email':profile['email'],
+                    'role':profile['role'], 'bio':profile['bio'],
+                    'skills': ', '.join(item for group in profile['skills'] for item in group['items']),
+                    'experience': '; '.join(f'{job["role"]} at {job["company"]} ({job["dates"]})' for job in profile['experience']),
+                    'stats': '; '.join(f'{stat["value"]} {stat["label"]}' for stat in profile['stats']),
+                    'social_links': '; '.join(f'{link["label"]}: {link["url"]}' for link in profile['links'])}
+    def expand(value):
+        if isinstance(value, list): return [expand(item) for item in value]
+        if isinstance(value, dict): return {key:expand(item) for key,item in value.items()}
+        if isinstance(value, str):
+            for key,text in replacements.items(): value = value.replace('{' + key + '}', text)
+        return value
+    profile['intro'] = expand(profile['intro'])
+    profile['bio'] = expand(profile['bio'])
+    assistant = expand(read_json(desktop / 'Assistant/Assistant.json'))
+    return profile, assistant
+
+
 def make_manifest(root: Path) -> dict:
     desktop = root / 'Desktop'
     desktop.mkdir(exist_ok=True)
-    profile = read_json(root / 'config/profile.json')
-    assistant = read_json(root / 'config/assistant.json')
+    profile, assistant = read_personal_content(root)
     for item in assistant.get('questions', []):
         if not isinstance(item.get('question'), str) or not isinstance(item.get('answer'), str):
             raise ValueError('Every custom Q&A needs a question and answer string.')
@@ -98,6 +147,12 @@ def generate_thumbnails(output: Path, data: dict, required: bool = False):
         print('Using original images for previews. GitHub builds optimize them automatically.')
         return
     generated = 0
+    try:
+        from pillow_heif import register_heif_opener
+        register_heif_opener()
+    except ImportError:
+        if required:
+            raise RuntimeError('Install image build dependencies: python -m pip install -r scripts/requirements.txt')
     for node in image_nodes(data['desktop']):
         source = output / node['path']
         # Keep the original extension to distinguish photo.jpg from photo.png.
@@ -110,6 +165,12 @@ def generate_thumbnails(output: Path, data: dict, required: bool = False):
                 warnings.simplefilter('error', Image.DecompressionBombWarning)
                 with Image.open(source) as original:
                     preview = ImageOps.exif_transpose(original)
+                    if source.suffix.lower() in {'.tif', '.tiff', '.heic', '.heif'}:
+                        # Keep the original; generate a browser-readable full-size preview.
+                        full = output / 'assets' / 'previews' / relative.parent / (relative.name + '.png')
+                        full.parent.mkdir(parents=True, exist_ok=True)
+                        preview.convert('RGBA' if 'A' in preview.getbands() else 'RGB').save(full, 'PNG')
+                        node['preview'] = full.relative_to(output).as_posix()
                     preview.thumbnail((420, 320), Image.Resampling.LANCZOS)
                     has_alpha = 'A' in preview.getbands() or 'transparency' in preview.info
                     preview = preview.convert('RGBA' if has_alpha else 'RGB')
@@ -124,15 +185,27 @@ def generate_thumbnails(output: Path, data: dict, required: bool = False):
     print(f'Generated {generated} image previews in _site only.')
 
 
-def version_desktop_script(output: Path):
-    """Give each desktop manifest a cache key, so added folders appear after reload."""
-    version = hashlib.sha256((output / 'assets/content.js').read_bytes()).hexdigest()[:16]
+def version_desktop_script(output: Path, profile=None):
+    """Version local entry assets so content, names, scripts and styles update together."""
     index = output / 'index.html'
     html = index.read_text(encoding='utf-8')
-    html, count = re.subn(r'(\bsrc=[\"\'])assets/content\.js(?:\?[^\"\']*)?([\"\'])',
-                          lambda match: f'{match[1]}assets/content.js?v={version}{match[2]}', html)
-    if count != 1:
+    if profile:
+        title = html_tools.escape(f'{profile["alias"]}’s Desktop — {profile["name"]}')
+        html = re.sub(r'<title>[^<]*</title>', lambda _: f'<title>{title}</title>', html)
+        values = {'name':profile['name'], 'alias':profile['alias'], 'identity':f'{profile["name"]} · {profile["alias"]}'}
+        html = re.sub(r'(<[^>]+data-profile="(name|alias|identity)"[^>]*>)[^<]*(</[^>]+>)',
+                      lambda m: m[1] + html_tools.escape(values[m[2]]) + m[3], html)
+        description = html_tools.escape(f'{profile["name"]} ({profile["alias"]}). {profile["role"]}. {profile["intro"]}', quote=True)
+        html = re.sub(r'(<meta name="description" content=")[^"]*(">)', lambda m:m[1]+description+m[2],html)
+    if len(re.findall(r'\bsrc=[\"\']assets/content\.js(?:\?[^\"\']*)?[\"\']', html)) != 1:
         raise ValueError('index.html must load assets/content.js exactly once.')
+    def versioned(match):
+        asset = output / match[2]
+        if not asset.is_file() or not asset.resolve().is_relative_to(output.resolve()):
+            return match[0]
+        version = hashlib.sha256(asset.read_bytes()).hexdigest()[:16]
+        return f'{match[1]}{match[2]}?v={version}{match[3]}'
+    html = re.sub(r'(\b(?:src|href)=[\"\'])(assets/[^\"\'?]+)(?:\?[^\"\']*)?([\"\'])', versioned, html)
     index.write_text(html, encoding='utf-8')
 
 
@@ -150,11 +223,11 @@ def build(root: Path = ROOT, export: bool = True, require_thumbnails: bool = Fal
             shutil.rmtree(output)
         output.mkdir()
         shutil.copy2(root / 'index.html', output / 'index.html')
-        copy_tree_safe(root / 'assets', output / 'assets', exclude={'thumbnails'})
+        copy_tree_safe(root / 'assets', output / 'assets', exclude={'thumbnails', 'previews'})
         copy_tree_safe(root / 'Desktop', output / 'Desktop')
         generate_thumbnails(output, data, required=require_thumbnails)
         write_manifest(output / 'assets' / 'content.js', data)
-        version_desktop_script(output)
+        version_desktop_script(output, data['profile'])
         (output / '.nojekyll').touch()
     def count(node):
         return 1 + sum(count(child) for child in node.get('children', []))

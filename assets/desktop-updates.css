@@ -108,3 +108,11 @@
   .preview-caption{flex-wrap:nowrap;min-height:53px;padding:8px 10px}
   .preview-caption>a{font-size:.6rem;gap:4px}
 }
+
+/* Personal apps use their Desktop folders; all icons remain reachable. */
+.desktop-apps{bottom:115px;max-width:calc(100vw - 32px);display:grid;grid-auto-flow:column;grid-template-rows:repeat(auto-fill,105px);grid-auto-columns:96px;gap:12px;align-content:start;justify-content:end;overflow:auto;scrollbar-width:thin}
+.brand-menu{letter-spacing:-.025em;font-size:.86rem!important;white-space:nowrap}
+.brand-menu span{font-weight:800}.window-header-end{max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.window-title{left:105px;right:120px}.source-files{margin-top:25px;padding-top:18px;border-top:1px solid var(--line)}
+.document-content>p{white-space:pre-line}.welcome-copy>.intro{white-space:pre-line}
+@media(max-width:700px){.desktop-apps{bottom:150px;grid-template-rows:repeat(auto-fill,90px);grid-auto-columns:78px;gap:10px}.window-title{left:80px;right:20px}.brand-menu{padding:0 5px!important;font-size:.73rem!important}.menu-identity{display:none}}

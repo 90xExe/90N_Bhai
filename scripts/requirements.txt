@@ -1,2 +1,3 @@
 # Build-time only. Visitors and local basic previews need no packages.
 Pillow==12.3.0
+pillow-heif==1.7.0

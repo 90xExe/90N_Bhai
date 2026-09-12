@@ -1,0 +1,25 @@
+{
+  "title": "Behind the broadcasts.",
+  "subtitle": "My journey in esports production.",
+  "note": "Backend operations. Live execution. A show that keeps moving.",
+  "items": [
+    {
+      "dates": "2025 — Present",
+      "company": "Mangrove Esports",
+      "role": "Broadcast Engineer Head",
+      "description": "Leading esports live-production backend operations, with a primary focus on Free Fire tournament workflows and production reliability."
+    },
+    {
+      "dates": "2024 — 2025",
+      "company": "T4B Officials",
+      "role": "Broadcast Engineer",
+      "description": "Managed live stream setup, overlays, backend production workflows, and technical broadcast support for esports events."
+    },
+    {
+      "dates": "2023 — 2024",
+      "company": "Liquid Production",
+      "role": "Production Support",
+      "description": "Built hands-on experience with streaming tools, scene control, graphics workflows, and backend coordination in community esports production."
+    }
+  ]
+}

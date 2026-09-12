@@ -1,10 +1,10 @@
 {
-  "name": "Ask 90N",
-  "welcome": "Hey! I’m Noyon’s portfolio assistant. I can help you explore his work, skills, and broadcast experience. What would you like to know?",
+  "name": "Ask {alias}",
+  "welcome": "Hey! I’m {name}’s portfolio assistant. I can help you explore his work, skills, and broadcast experience. What would you like to know?",
   "disclosure": "Quick answers use saved Q&A. Enable on-device AI for natural, context-aware replies.",
-  "fallback": "I don’t have a verified answer to that in Noyon’s portfolio yet. You can ask about his projects, skills, experience, or get in touch with him directly.",
+  "fallback": "I don’t have a verified answer to that in {name}’s portfolio yet. You can ask about his projects, skills, experience, or get in touch with him directly.",
   "suggestions": [
-    "What does Noyon do?",
+    "What does {name} do?",
     "Show me his projects",
     "What tools does he use?",
     "How can I contact him?"
@@ -12,7 +12,7 @@
   "questions": [
     {
       "id": "about",
-      "question": "What does Noyon do?",
+      "question": "What does {name} do?",
       "keywords": [
         "who",
         "about",
@@ -24,11 +24,13 @@
         "পরিচয়",
         "কে",
         "ki koro",
-        "ke tumi"
+        "ke tumi",
+        "sensei",
+        "nub"
       ],
-      "answer": "Md Nazim Uddin Noyon, also known as 90N Bhai, is a Broadcast Engineer specializing in esports backend production. His work covers live stream operations, overlays, observer integration, scene control, and automation, with a strong focus on Free Fire tournaments.",
+      "answer": "{name}, also known as {alias}, is a {role}. {bio}",
       "action": "about",
-      "actionLabel": "Meet Noyon"
+      "actionLabel": "Meet {name}"
     },
     {
       "id": "projects",
@@ -73,7 +75,7 @@
         "দক্ষ",
         "paro"
       ],
-      "answer": "Noyon works with vMix and OBS Studio for broadcast production. His software skills include C++, C#, Python, Java, JavaScript, HTML, and CSS. He also uses Excel, Google Sheets, and API workflows for production data and automation.",
+      "answer": "His toolkit includes {skills}. Open Skills for more about how these tools support his work.",
       "action": "skills",
       "actionLabel": "Explore skills"
     },
@@ -95,7 +97,7 @@
         "কোথায়",
         "kothay"
       ],
-      "answer": "His portfolio lists Broadcast Engineer Head at Mangrove Esports (2025–Present), Broadcast Engineer at T4B Officials (2024–2025), and Production Support at Liquid Production (2023–2024).",
+      "answer": "His portfolio lists: {experience}. Open Experience for the details.",
       "action": "experience",
       "actionLabel": "View experience"
     },
@@ -127,7 +129,7 @@
         "jogajog",
         "koto"
       ],
-      "answer": "For production work or collaboration, email nahid222003@gmail.com. Share the event dates, broadcast requirements, and scope so Noyon can discuss availability and pricing with you. Rates aren’t listed in this portfolio.",
+      "answer": "For production work or collaboration, email {email}. Share the event dates, broadcast requirements, and scope so {name} can discuss availability and pricing with you. Rates aren’t listed in this portfolio.",
       "action": "contact",
       "actionLabel": "Get in touch"
     },
@@ -164,7 +166,7 @@
         "ফ্রি ফায়ার",
         "ব্রডকাস্ট"
       ],
-      "answer": "Yes. Free Fire esports is a core focus of Noyon’s broadcast work. His portfolio lists 2,500+ live productions and 150+ Free Fire events, with responsibilities across stream setup, switching, graphics, backend coordination, and observer integration.",
+      "answer": "Free Fire esports is a core focus of his broadcast work. Portfolio highlights: {stats}. {bio}",
       "action": "finder",
       "actionLabel": "See the productions"
     },
@@ -180,9 +182,13 @@
         "social",
         "code",
         "channel",
-        "90xexe"
+        "90xexe",
+        "instagram",
+        "tiktok",
+        "sensei",
+        "nub"
       ],
-      "answer": "His GitHub is github.com/90xExe and his YouTube channel is @90n_bhai. You’ll also find LinkedIn, Facebook, and Discord in the Contact window.",
+      "answer": "You can find {name} on these profiles: {social_links}. All links are also in the Contact window.",
       "action": "contact",
       "actionLabel": "Open social links"
     },
@@ -199,7 +205,7 @@
         "আসসালামু",
         "সালাম"
       ],
-      "answer": "Hey! Great to have you here. Ask me about Noyon’s esports productions, his experience, the tools he uses, or how to get in touch."
+      "answer": "Hey! Great to have you here. Ask me about {name}’s esports productions, his experience, the tools he uses, or how to get in touch."
     },
     {
       "id": "thanks",
@@ -210,7 +216,7 @@
         "ধন্যবাদ",
         "dhonnobad"
       ],
-      "answer": "You’re welcome! Feel free to explore the desktop or ask me another question about Noyon’s work."
+      "answer": "You’re welcome! Feel free to explore the desktop or ask me another question about {name}’s work."
     }
   ]
 }

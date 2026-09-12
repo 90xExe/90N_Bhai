@@ -1,0 +1,41 @@
+{
+  "name": "Md. Nazim Uddin Noyon",
+  "alias": "Sensei NUB",
+  "role": "Broadcast Engineer",
+  "photo": "Desktop/About me/Profile.webp",
+  "headline": "The technical side of going live.",
+  "stats": [
+    {
+      "value": "2500+",
+      "label": "Live productions"
+    },
+    {
+      "value": "150+",
+      "label": "Free Fire events"
+    },
+    {
+      "value": "2023",
+      "label": "Where it all began"
+    }
+  ],
+  "tagline": "Esports · Live production",
+  "photoCaption": "Behind the scenes. On the air.",
+  "availability": "Open to production collaborations",
+  "capabilities": [
+    {
+      "icon": "broadcast",
+      "title": "Broadcast engineering",
+      "description": "Live setup, routing, switching, overlays, and the workflows behind a smooth broadcast."
+    },
+    {
+      "icon": "play",
+      "title": "Esports production",
+      "description": "Free Fire event operations, observer integration, and coordination when it’s time to go live."
+    },
+    {
+      "icon": "code",
+      "title": "Automation & code",
+      "description": "Custom tools, data workflows, and practical software that make production easier to run."
+    }
+  ]
+}

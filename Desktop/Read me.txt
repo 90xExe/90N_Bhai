@@ -1,22 +1,31 @@
-Welcome to Noyon’s desktop.
+Md. Nazim Uddin Noyon · Sensei NUB
 
-I’m Md Nazim Uddin Noyon, also known as 90N Bhai.
-I work behind the scenes of esports as a Broadcast Engineer.
+নিজের portfolio edit করার নিয়ম
 
-OPEN PROJECTS
-Browse the Projects folder for production visuals from five Free Fire events.
-Open any image to view it in Preview. Use the arrow buttons or your keyboard
-to browse the other images in that folder.
+সব personal information এখন Desktop folder-এ। GitHub-এ প্রয়োজনীয় file খুলে pencil/Edit চাপো, পরিবর্তন করে Commit changes দাও। Actions-এর deploy সফল হলে website refresh করো। কোনো পরিবর্তন দেখতে না পেলে একবার Ctrl + Shift + R চাপো।
 
-EXPLORE
-The dock opens About, Experience, Skills, Contact, and Ask 90N.
-Windows can be moved, resized, minimized, and reopened from the dock.
-On a phone, windows adapt to your screen.
+কোথায় কী edit করবে:
 
-LET’S TALK
-Email: nahid222003@gmail.com
-GitHub: https://github.com/90xExe/
-YouTube: https://www.youtube.com/@90n_bhai
+About me/Profile.json — নাম, alias, পেশা, headline, stats, capability cards এবং ছবির path।
+About me/Introduction.txt — প্রথম Welcome/About window-এর পরিচিতি। শুধু নিজের লেখা দাও।
+About me/Bio.txt — About me-এর বিস্তারিত পরিচিতি। শুধু নিজের লেখা দাও।
+About me/Profile.webp — তোমার ছবি। নতুন নামের ছবি দিলে Profile.json-এর photo path-ও বদলাও।
+Experience/Experience.json — কাজের পদ, প্রতিষ্ঠান, সময় এবং description; items-এর একটি object কপি করে নতুন কাজ যোগ করো।
+Skills/Skills.json — দক্ষতার groups ও items।
+Contact/Contact.json — email, Facebook, YouTube, TikTok, Instagram এবং অন্য social links।
+Assistant/Assistant.json — AI assistant-এর welcome, suggestions এবং custom প্রশ্ন-উত্তর।
+Projects/ — নতুন project folder, ছবি, txt, PDF বা video এখানে যোগ করো। Thumbnails নিজে তৈরি হয়।
 
-Thanks for stopping by.
-— 90N Bhai
+JSON edit করার সময় বাম দিকের field names, quotes, comma, [ ] ও { } ঠিক রাখবে; সাধারণত ডান দিকের লেখাগুলো বদলালেই হবে। Introduction.txt ও Bio.txt plain text, এখানে JSON লিখতে হবে না।
+
+Assistant-এর {name}, {alias}, {email}, {social_links} নিজে থেকে Profile ও Contact-এর তথ্য ব্যবহার করে। একই তথ্য দুই জায়গায় লিখতে হয় না।
+
+About me, Experience, Skills, Contact, Assistant folder এবং তাদের মূল JSON/TXT file-এর নাম একই রাখবে। Projects-এর ভিতরে নিজের মতো folder/file তৈরি করতে পারো।
+
+Website-এর app খুললে সাজানো page দেখাবে। Show files in Finder চাপলে ওই app-এর source files দেখা যাবে। স্থায়ী পরিবর্তন GitHub-এর file editor বা নিজের computer-এর file-এ করতে হবে; visitor-এর browser থেকে GitHub file লেখা হয় না।
+
+নিজের computer-এ Desktop edit করলে Refresh Desktop.cmd চালাও, অথবা Start Portfolio.cmd দিয়ে preview দেখো। Live website update করতে পরিবর্তন GitHub-এ commit/push করতে হবে।
+
+File support: PNG, JPG/JPEG/JFIF, GIF, WebP, SVG, AVIF, BMP, ICO, TIFF, HEIC/HEIF images; PDF; video/audio; text/code; and all other downloadable files. TIFF and HEIC/HEIF get a PNG preview during deployment; originals remain downloadable. Animated GIF stays animated in Preview. Video/audio playback depends on browser codec support. ZIP, Office documents and unknown binary formats show file information and Download.
+
+Assistant templates also support {role}, {bio}, {skills}, {experience}, {stats}; these follow the relevant personal files automatically.
